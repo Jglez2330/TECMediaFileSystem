@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+\.idea/codeStyles/
+
+\.idea/
+
+cmake-build-debug/
