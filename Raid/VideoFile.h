@@ -18,18 +18,18 @@ public:
      */
     VideoFile(char* path);
 
-    unsigned char *getVideo() const;
+    unsigned char * getVideo() const;
 
     void setVideo(unsigned char *video);
 
-    int getLength() const;
+    long long getLength() const;
 
     void setLength(int length);
     //Getters and Setters
 
 private:
     unsigned char * video;
-    int length;
+    long long length;
 
 };
 

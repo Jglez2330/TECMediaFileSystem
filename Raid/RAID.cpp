@@ -5,6 +5,8 @@
 #include <fstream>
 #include "RAID.h"
 #include <cstring>
+#include <iostream>
+
 RAID::RAID() {
 
 }
@@ -17,28 +19,47 @@ unsigned char * RAID::read(char *path) {
 
 unsigned char* RAID::write(VideoFile *video, char *Path) {
     unsigned char* videoFile = video->getVideo();
-    int size = video->getLength();
+    long long size = video->getLength();
 
     unsigned char* filepart1 = splitChar(videoFile, 0, size/3);
     unsigned char* filepart2 = splitChar(videoFile, size/3 , 2*size/3);
     unsigned char* filepart3 = splitChar(videoFile, 2*size/3 , size);
-    unsigned char* filepart4 = parityXOR(filepart1,filepart2,filepart3);
-    unsigned char* filepart5 = parityXOR(filepart1,filepart2,filepart4);
-    unsigned char* filepart6 = parityXOR(filepart3,filepart2,filepart4);
+    unsigned char* filepart4 = parityXOR(filepart1,filepart2,filepart3, size/3);
+
+    std::ofstream out1 ("1.mp4",std::ios::binary);
+    std::ofstream out2 ("2.mp4",std::ios::binary);
+    std::ofstream out3 ("3.mp4",std::ios::binary);
+    std::ofstream out4 ("4.mp4",std::ios::binary);
+    std::ofstream out5 ("5.mp4",std::ios::binary);
+
+    for (int i = 0; i <size/3 ; i++) {
+        out1 << filepart1[i];
+
+    }for (int i = 0; i <size/3 ; i++) {
+        out2 << filepart2[i];
+
+    }for (int i = 0; i <size/3 ; i++) {
+        out3 << filepart3[i];
+
+    }for (int i = 0; i <size/3 ; i++) {
+        out4 << filepart4[i];
+
+    }
 
 
+    out1.close();
+    out2.close();
+    out3.close();
+    out4.close();
+    out5.close();
 
-    FILE* file1 = fopen("1.txt","wb+");
-    FILE* file2 = fopen("2.txt","wb+");
-    FILE* file3 = fopen("3.txt","wb+");
-    FILE* file4 = fopen("4.txt","wb+");
-    FILE* file5 = fopen("5.txt","wb+");
 
+    /*
     fwrite(filepart1,sizeof(unsigned char), sizeof(filepart1), file1);
     fwrite(filepart2,sizeof(unsigned char), sizeof(filepart1), file2);
     fwrite(filepart3,sizeof(unsigned char), sizeof(filepart1), file3);
     fwrite(filepart4,sizeof(unsigned char), sizeof(filepart1), file4);
-    fwrite(videoFile,sizeof(unsigned char), sizeof(videoFile), file5);
+    fwrite(videoFile,sizeof(unsigned char), sizeof(videoFile), file5);*/
 
 
 
@@ -56,18 +77,17 @@ bool RAID::recontructData(int diskFailure) {
     return false;
 }
 
-unsigned char * RAID::parityXOR(unsigned char* partOfFile1, unsigned char* partOfFile2, unsigned char* partOfFile3) {
-    unsigned char* parity = XOR(partOfFile1,partOfFile2);
+unsigned char * RAID::parityXOR(unsigned char *partOfFile1, unsigned char *partOfFile2, unsigned char *partOfFile3, long long size) {
+    unsigned char* parity = XOR(partOfFile1,partOfFile2, size);
 
-    parity = XOR(parity,partOfFile3);
+    parity = XOR(parity,partOfFile3, size);
 
     return parity;
 
 
 }
 
-unsigned char *RAID::XOR(unsigned char *partOfFile1, unsigned char *partOfFile2) {
-    int size = sizeof(partOfFile1) / sizeof(unsigned char);
+unsigned char * RAID::XOR(unsigned char *partOfFile1, unsigned char *partOfFile2, long long size) {
     unsigned char* parity = new unsigned char[size];
 
     for (int i = 0; i < size; i++) {
@@ -78,7 +98,8 @@ unsigned char *RAID::XOR(unsigned char *partOfFile1, unsigned char *partOfFile2)
     return parity;
 }
 
-unsigned char *RAID::splitChar(unsigned char *file, int i, int final) {
+unsigned char * RAID::splitChar(unsigned char *file, long long int i, long long int final) {
+
     unsigned char* filePart = new unsigned char[final - i];
     int index = 0;
     for (int j = i; j < final; j++) {

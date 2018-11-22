@@ -20,7 +20,8 @@ public:
      * @param partOfFile3 third part of the file
      * @return returns The exclusive or parity of the missing part of the file
      */
-    static unsigned char * parityXOR(unsigned char *partOfFile1, unsigned char *partOfFile2, unsigned char *partOfFile3);
+    static unsigned char * parityXOR(unsigned char *partOfFile1, unsigned char *partOfFile2, unsigned char *partOfFile3,
+                                     long long size);
 
 private:
     /**
@@ -29,11 +30,11 @@ private:
      * @param partOfFile2 Another part of the complete file
      * @return return the exclusive or of the partOfFile1 and partOfFile2
      */
-    static unsigned char* XOR(unsigned char* partOfFile1 , unsigned char* partOfFile2);
+    static unsigned char * XOR(unsigned char *partOfFile1, unsigned char *partOfFile2, long long size);
     RAID();
 
 
-    static unsigned char *splitChar(unsigned char *file, int i, int final);
+    static unsigned char * splitChar(unsigned char *file, long long int i, long long int final);
 };
 
 
