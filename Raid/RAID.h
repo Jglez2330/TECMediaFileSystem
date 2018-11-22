@@ -10,7 +10,7 @@ class RAID {
 
 public:
 
-    static unsigned char * write(unsigned char *videoFile, char *Path);
+    static unsigned char * write(VideoFile *video, char *Path);
     static unsigned char * read(char *path);
     static bool  recontructData(int diskFailure);
     /**

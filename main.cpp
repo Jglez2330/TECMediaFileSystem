@@ -8,13 +8,13 @@
 
 int main() {
     //Change Path
-    VideoFile vid = VideoFile("/home/gabriel/Desktop/Proyecto3/TECMediaFileSystem/Prueba.mp4");
+    VideoFile* vid = new VideoFile("/home/gabriel/Desktop/Proyecto3/TECMediaFileSystem/Prueba.mp4");
 
     unsigned char hola[12]= {'A','B','C','D','E','F','G','H','T','Z','X','Y'};
 
-    RAID::write(vid.getVideo(),"Hola");
+    RAID::write(vid,"Hola");
 
-
+/*
 
     unsigned char* a = new unsigned char('A');
     unsigned char* b = new unsigned char('B');
@@ -23,7 +23,7 @@ int main() {
     std::cout<< b;
     std::cout<< c;
     std::cout << RAID::parityXOR(a,b,c);
-
+*/
 
     return 0;
 }

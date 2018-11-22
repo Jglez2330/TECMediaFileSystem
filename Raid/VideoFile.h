@@ -21,11 +21,15 @@ public:
     unsigned char *getVideo() const;
 
     void setVideo(unsigned char *video);
+
+    int getLength() const;
+
+    void setLength(int length);
     //Getters and Setters
 
 private:
     unsigned char * video;
-    
+    int length;
 
 };
 

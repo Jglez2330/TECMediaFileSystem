@@ -4,7 +4,7 @@
 
 #include <fstream>
 #include "RAID.h"
-
+#include <cstring>
 RAID::RAID() {
 
 }
@@ -15,9 +15,9 @@ unsigned char * RAID::read(char *path) {
     return nullptr;
 }
 
-unsigned char* RAID::write(unsigned char *videoFile, char *Path) {
-
-    int size = strlen((char*) videoFile) - 1;
+unsigned char* RAID::write(VideoFile *video, char *Path) {
+    unsigned char* videoFile = video->getVideo();
+    int size = video->getLength();
 
     unsigned char* filepart1 = splitChar(videoFile, 0, size/3);
     unsigned char* filepart2 = splitChar(videoFile, size/3 , 2*size/3);
