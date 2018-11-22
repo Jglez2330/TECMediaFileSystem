@@ -3,4 +3,4 @@ project(TECMediaFileSystem)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(TECMediaFileSystem main.cpp RAID.cpp RAID.h)
+add_executable(TECMediaFileSystem main.cpp Raid/RAID.cpp Raid/RAID.h Raid/VideoFile.cpp Raid/VideoFile.h)
