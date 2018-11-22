@@ -4,15 +4,15 @@
 #include <sstream>
 #include <vector>
 #include "Raid/RAID.h"
+#import "Raid/VideoFile.h"
 
 int main() {
-
-
-
+    //Change Path
+    VideoFile vid = VideoFile("/home/gabriel/Desktop/Proyecto3/TECMediaFileSystem/Prueba.mp4");
 
     unsigned char hola[12]= {'A','B','C','D','E','F','G','H','T','Z','X','Y'};
 
-    RAID::write(hola,"Hola");
+    RAID::write(vid.getVideo(),"Hola");
 
 
 
