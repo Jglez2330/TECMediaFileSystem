@@ -17,11 +17,14 @@ unsigned char * RAID::read(char *path) {
 
 unsigned char* RAID::write(unsigned char *videoFile, char *Path) {
 
-    
-    unsigned char* filepart1 = splitChar(videoFile, 0, sizeof(videoFile)/3 + 1);
-    unsigned char* filepart2 = splitChar(videoFile, sizeof(videoFile)/3 , 2*(sizeof(videoFile))/3 + 1);
-    unsigned char* filepart3 = splitChar(videoFile, 2*(sizeof(videoFile))/3 , sizeof(videoFile) + 1);
+    int size = strlen((char*) videoFile) - 1;
+
+    unsigned char* filepart1 = splitChar(videoFile, 0, size/3);
+    unsigned char* filepart2 = splitChar(videoFile, size/3 , 2*size/3);
+    unsigned char* filepart3 = splitChar(videoFile, 2*size/3 , size);
     unsigned char* filepart4 = parityXOR(filepart1,filepart2,filepart3);
+    unsigned char* filepart5 = parityXOR(filepart1,filepart2,filepart4);
+    unsigned char* filepart6 = parityXOR(filepart3,filepart2,filepart4);
 
 
 
@@ -31,11 +34,11 @@ unsigned char* RAID::write(unsigned char *videoFile, char *Path) {
     FILE* file4 = fopen("4.txt","wb+");
     FILE* file5 = fopen("5.txt","wb+");
 
-    fwrite(filepart1, sizeof(unsigned char), sizeof(filepart1), file1);
+    fwrite(filepart1,sizeof(unsigned char), sizeof(filepart1), file1);
     fwrite(filepart2,sizeof(unsigned char), sizeof(filepart1), file2);
     fwrite(filepart3,sizeof(unsigned char), sizeof(filepart1), file3);
     fwrite(filepart4,sizeof(unsigned char), sizeof(filepart1), file4);
-    fwrite(videoFile, sizeof( unsigned char), sizeof(videoFile), file5);
+    fwrite(videoFile,sizeof(unsigned char), sizeof(videoFile), file5);
 
 
 

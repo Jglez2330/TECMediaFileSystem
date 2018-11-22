@@ -14,11 +14,11 @@ public:
     static unsigned char * read(char *path);
     static bool  recontructData(int diskFailure);
     /**
-     *
-     * @param partOfFile1
-     * @param partOfFile2
-     * @param partOfFile3
-     * @return
+     * Calculates the exclusive or parity of the fourth file
+     * @param partOfFile1 first part of the file
+     * @param partOfFile2 second part of the file
+     * @param partOfFile3 third part of the file
+     * @return returns The exclusive or parity of the missing part of the file
      */
     static unsigned char * parityXOR(unsigned char *partOfFile1, unsigned char *partOfFile2, unsigned char *partOfFile3);
 
