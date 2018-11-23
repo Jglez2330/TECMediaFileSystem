@@ -7,11 +7,29 @@
 
 #include <istream>
 
-class VideoFile : public std::istream {
+class VideoFile{
 
 public:
-    VideoFile(char* path,int r );
-    
+
+    /**
+     * Function that gets the video and create a Unsigned Char Array
+     * @param path
+     * @param r
+     */
+    VideoFile(char* path);
+
+    unsigned char * getVideo() const;
+
+    void setVideo(unsigned char *video);
+
+    long long getLength() const;
+
+    void setLength(int length);
+    //Getters and Setters
+
+private:
+    unsigned char * video;
+    long long length;
 
 };
 
