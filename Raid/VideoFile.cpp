@@ -30,9 +30,6 @@ VideoFile::VideoFile(char* path){
 
     mp4.read(buffer,length);
     video = (unsigned char*) buffer;
-    std::cout << "video" << std::endl;
-    for (int i = 0; i < length; i++ )
-        std::cout << (char)video[i];
     mp4.close();
 }
 

@@ -19,6 +19,7 @@ int main() {
 
 
     RAID::write(vid,"Hola");
+    RAID::read("");
 
 
 
