@@ -10,6 +10,5 @@ int main() {
     //Change Path
     VideoFile* vid = new VideoFile("Prueba.mp4");
 
-    RAID::write(vid,"Hola");
     return 0;
 }

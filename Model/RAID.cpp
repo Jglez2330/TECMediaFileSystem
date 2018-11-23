@@ -12,14 +12,12 @@ RAID::RAID() {
 }
 
 unsigned char * RAID::read(char *path) {
-
-
     return nullptr;
 }
 
-unsigned char* RAID::write(VideoFile *video, char *Path) {
-    unsigned char* videoFile = video->getVideo();
-    long long size = video->getLength();
+unsigned char* RAID::write(char *video,long long length, std::string Path) {
+    unsigned char* videoFile = (unsigned char *) video;
+    long long size = length;
 
     unsigned char* filepart1 = splitChar(videoFile, 0, size/3);
     unsigned char* filepart2 = splitChar(videoFile, size/3 , 2*size/3);
