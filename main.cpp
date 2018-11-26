@@ -45,5 +45,18 @@ int main() {
     std::cout<< man.searchVideo("Prueba");
 
 
+
+
+
+
+
+
+
+
+    RAID::write(vid,"Hola");
+    RAID::read("");
+
+
+
     return 0;
 }
