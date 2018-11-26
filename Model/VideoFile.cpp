@@ -7,22 +7,12 @@
 #include "RAID.h"
 
 #include "VideoFile.h"
-VideoFile::VideoFile(char* path){
-    //Opens the file
-    std::fstream mp4;
-    mp4.open(path,std::fstream::in | std::fstream::binary | std::fstream::app);
-    mp4.seekg(0,mp4.end);
-    long long length = mp4.tellg();
-    mp4.seekg(0,mp4.beg);
-    //Creates a buffer to store the file
-    char * buffer = new char [length];
-    //Reads the file
-    mp4.read(buffer,length);
+VideoFile::VideoFile(std::string video){
+    long long length = video.size();
     //Writes the file to the memory
     Code = gencode();
-    RAID::write(buffer,length, Code);
-    //Closes the file
-    mp4.close();
+    RAID::write(video.data(),length, Code);
+
 }
 std::string VideoFile::gencode() {
     size_t length = 6;

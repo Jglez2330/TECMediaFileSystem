@@ -11,7 +11,7 @@ class RAID {
 public:
 
     static unsigned char * write(char* video,long long length, std::string Path);
-    static unsigned char * read(char *path);
+    static unsigned char * read(std::string code);
     static bool  recontructData(int diskFailure);
     /**
      * Calculates the exclusive or parity of the fourth file

@@ -6,8 +6,21 @@
 #define TECMEDIAFILESYSTEM_MANAGER_H
 
 
-class Manager {
+#include "RBTree.h"
+#include "json.hpp"
 
+using json = nlohmann::json;
+
+class Manager {
+private:
+    RBTree* datamanagement;
+public:
+    Manager() {datamanagement = new RBTree;};
+    bool addVideo(json j);
+    std::string searchVideo(std::string name);
+    bool changeMetadata(std::string name, json j);
+    bool deleteVideo(std::string name);
+    void printTreeInOrder();
 };
 
 
