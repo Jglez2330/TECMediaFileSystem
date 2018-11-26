@@ -25,6 +25,7 @@ private:
     int serverSocket;
     int portNumber;
     int client;
+    char buffer[1024*1024];
     static DiskController* serverSocketInstancePTR;
     DiskController(DiskController const&){};
 

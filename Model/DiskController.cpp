@@ -68,16 +68,17 @@ void DiskController::listenClient() {
     std::string message = "";
     int status;
     while (!isClientMessageComplete){
-        read(this->client, bufferByte,256);
+        read(this->client, bufferByte,1);
 
-        if (bufferByte[0] == '\0'){
-            continue;
-        }
-        if (bufferByte[0] == 'P'){
+
+        if (bufferByte[0] == '\n'){
             message + '\n';
             break;
         }
-        message + bufferByte;
+        if (bufferByte[0] != 0x0) {
+            message.push_back(bufferByte[0]);
+        }
+        bzero(bufferByte,1);
 
     }
 
