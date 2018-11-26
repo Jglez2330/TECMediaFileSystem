@@ -3,8 +3,8 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
-#include "Raid/RAID.h"
-#import "Raid/VideoFile.h"
+#include "Model/RAID.h"
+#import "Model/VideoFile.h"
 
 int main() {
     //Change Path
