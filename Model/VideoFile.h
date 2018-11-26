@@ -17,7 +17,7 @@ public:
      * @param path
      * @param r
      */
-    VideoFile(char* path);
+    VideoFile(std::string);
     //Getters and Setters
     long long getLength() const;
     void setLength(int length);

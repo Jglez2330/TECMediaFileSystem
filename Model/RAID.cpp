@@ -11,8 +11,8 @@ RAID::RAID() {
 
 }
 
-unsigned char * RAID::read(char *path) {
-    return nullptr;
+unsigned char * RAID::read(std::string code) {
+    throw "Not implmented";
 }
 
 unsigned char* RAID::write(char *video,long long length, std::string Path) {
