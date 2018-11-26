@@ -27,14 +27,16 @@ std::string Manager::searchVideo(std::string name){
 }
 bool Manager::changeMetadata(std::string name, json j){
     try {
-        datamanagement->deleteValue(name);
-        VideoFile* video = new VideoFile(j["VideoBytes"]);
-        video->setName(j["Name"]);
-        video->setDirector(j["Director"]);
-        video->setDuration(j["Duration"]);
-        video->setDescription(j["Description"]);
-        video->setDate(j["Date"]);
-        datamanagement->insert(video);
+        std::string vid = searchVideo(name);
+        if (deleteVideo(name)){
+            VideoFile* video = new VideoFile(vid);
+            video->setName(j["Name"]);
+            video->setDirector(j["Director"]);
+            video->setDuration(j["Duration"]);
+            video->setDescription(j["Description"]);
+            video->setDate(j["Date"]);
+            datamanagement->insert(video);
+        }
         return true;
     }
     catch (int e){
