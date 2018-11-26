@@ -11,23 +11,9 @@ RAID::RAID() {
 
 }
 
-unsigned char * RAID::read(char *path) {
 
-    VideoFile videoFile  = VideoFile("1.mp4");
-    VideoFile videoFile1 = VideoFile("2.mp4");
-    VideoFile videoFile2 = VideoFile("3.mp4");
-
-
-
-
-
-
-    std::ofstream out5 ("6.mp4",std::ios::binary);
-
-    out5.close();
-
-
-    return nullptr;
+unsigned char * RAID::read(std::string code) {
+    throw "Not implmented";
 }
 
 unsigned char* RAID::write(char *video,long long length, std::string Path) {
