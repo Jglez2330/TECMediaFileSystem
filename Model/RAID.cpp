@@ -16,7 +16,6 @@ unsigned char * RAID::read(char *path) {
     VideoFile videoFile  = VideoFile("1.mp4");
     VideoFile videoFile1 = VideoFile("2.mp4");
     VideoFile videoFile2 = VideoFile("3.mp4");
-    long long size = videoFile.getLength();
 
 
 
@@ -24,17 +23,6 @@ unsigned char * RAID::read(char *path) {
 
 
     std::ofstream out5 ("6.mp4",std::ios::binary);
-
-    for (int i = 0; i <size ; i++) {
-        out5 << videoFile.getVideo()[i];
-
-    }for (int i = 0; i <size ; i++) {
-        out5 << videoFile1.getVideo()[i];
-
-    }for (int i = 0; i <size ; i++) {
-        out5 << videoFile2.getVideo()[i];
-
-    }
 
     out5.close();
 

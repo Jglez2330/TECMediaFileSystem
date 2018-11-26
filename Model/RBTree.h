@@ -5,7 +5,6 @@
 #ifndef TECMEDIAFILESYSTEM_AVLTREE_H
 #define TECMEDIAFILESYSTEM_AVLTREE_H
 
-#include <bits/stdc++.h>
 #include "VideoFile.h"
 
 enum Color {RED, BLACK};

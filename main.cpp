@@ -5,10 +5,13 @@
 #include <vector>
 #include "Model/RAID.h"
 #import "Model/VideoFile.h"
+#include "Model/DiskController.h"
 
 int main() {
     //Change Path
-    VideoFile* vid = new VideoFile("Prueba.mp4");
+    //VideoFile* vid = new VideoFile("Prueba.mp4");
+
+    DiskController* diskController = DiskController::getInstance();
 
 
 
@@ -18,8 +21,7 @@ int main() {
 
 
 
-    RAID::write(vid,"Hola");
-    RAID::read("");
+    //RAID::write(vid.,"","Hola");
 
 
 
