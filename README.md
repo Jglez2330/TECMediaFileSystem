@@ -1,4 +1,11 @@
 # TECMediaFileSystem
+## Introducción
+Se presenta como problema el desarrollo de una aplicación para el manejo y la administración de archivos, la cual va a permitir almacenar la información bajo una arquitectura distribuida. La idea principal del sistema es que se pueda implementar el concepto de RAID levels, a través de nodos disco que simulen los bloques de almacenamiento, y se permita la tolerancia a fallos con el objetivo de recuperar los archivos de interés y su información completa, aún cuando uno de los nodos se encuentre inhabilitado.
+
+El proyecto general se subdivide en tres partes principales. Por un lado el sistema posee un nodo controlador que se encarga de toda la lógica del sistema, tanto para comunicarse con las aplicaciones cliente como para administrar y almacenar de manera congruente con el RAID la información respectiva. Además, el sistema contiene los nodos que simulan los bloques de disco donde se albergarán y recuperarán los datos cuando así lo requiera el nodo controlador. Finalmente, el proyecto contiene una aplicación cliente para interactuar con los usuarios, la cual consiste en un reproductor de videos con una interfaz bastante agradable e interactiva, de manera que el usuario cree su biblioteca personal de videos, cuyos datos se almacenarán en los nodos disco.
+
+Para el desarrollo de la aplicación se emplea el paradigma orientado a objetos en dos lenguajes de programación distintos: C++ y C#. Se implementan conexiones cliente-servidor, además del uso de algoritmos y estructuras de datos, las cuales se detallan más adelante en este documento.
+
 ## Descripción del problema
 Tec Media File System (TECMFS) es un sistema de archivos que se asemeja mucho a una base de datos NoSQL bajo un esquema RAID 5. El mismo se encuentra construido mediante una arquitecrura distribuida llamada "Share Disk Architecure", la misma tendrá los siguientes componentes:
 
