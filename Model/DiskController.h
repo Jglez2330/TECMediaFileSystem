@@ -11,13 +11,13 @@
 #include "json.hpp"
 using json = nlohmann::json;
 
-class DiskController : Socket {
+class DiskController : public Socket {
 public:
 
     void error(char *error);
     static DiskController* getInstance();
     std::string listenClient();
-    std::string getClientXML();
+    std::string getClient();
     void send(json clientJson);
 
 

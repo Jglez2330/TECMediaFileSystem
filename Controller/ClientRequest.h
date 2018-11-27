@@ -7,28 +7,34 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <sys/socket.h>
-#include <stdlib.h>
-#include <netinet/in.h>
 #include <string.h>
-#include "../Model/json.hpp"
+#include "../Model/Socket.h"
 #include "../Model/Manager.h"
 
 using json = nlohmann::json;
 
-#define PORT 8080
-
-class ClientRequest {
+class ClientRequest : Socket {
 private:
-    int server_fd, new_socket, valread;
-    struct sockaddr_in address;
-    int opt = 1;
-    int addrlen = sizeof(address);
-    char buffer[1024] = {0};
-    bool fileDescriptor();
-    bool serverListen();
     std::string request(json op);
+
+    //SocketClient client;
+    int serverSocket;
+    int portNumber;
+    int client;
     Manager manager;
+    ClientRequest(ClientRequest const&){};
+
+
+
+
+
 public:
+
+    void send(std::string jsonMessage);
+    void getClient();
     ClientRequest();
+
+    static ClientRequest* getInstance();
+
 };
 #endif //TECMEDIAFILESYSTEM_CLIENTREQUEST_H

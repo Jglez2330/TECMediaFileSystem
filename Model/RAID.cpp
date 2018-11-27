@@ -16,6 +16,7 @@ RAID::RAID() {
 }
 
 
+
 std::string RAID::read(std::string code) {
 
     json jsonRequest = {{"opcode",1},{"videoCode",code}};
@@ -24,7 +25,7 @@ std::string RAID::read(std::string code) {
 
     d->send(jsonRequest);
 
-    json jsonResponse = json::parse(d->getClientXML());
+    json jsonResponse = json::parse(d->getClient());
 
 
     if (jsonResponse["data1"] == "nullptr"){
@@ -58,13 +59,13 @@ bool RAID::write(char *video, long long length, std::string Path) {
     std::string string3 ((char*)filepart3, ((char*)filepart3) + strlen((char*)filepart3));
     std::string string4 ((char*)filepart4, ((char*)filepart4) + strlen((char*)filepart4));
 
-    json jsonWrite = {{"opcode",0},{"data1",string1},{"data2",string2},{"data3",string3},{"parity",string4}};
+    json jsonWrite = {{"opcode",0},{"data1",string1},{"data2",string2},{"data3",string3},{"parity",string4},{"code",Path}};
 
 
     DiskController* d = DiskController::getInstance();
     d->send(jsonWrite);
 
-    json clientResponse = d->getClientXML();
+    json clientResponse = d->getClient();
 
     return clientResponse["saved"] == "true";
 
