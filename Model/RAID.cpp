@@ -25,6 +25,9 @@ unsigned char* RAID::write(char *video,long long length, std::string Path) {
     unsigned char* filepart3 = splitChar(videoFile, 2*size/3 , size);
     unsigned char* filepart4 = parityXOR(filepart1,filepart2,filepart3, size/3);
     unsigned char* filepart5 = parityXOR(filepart2,filepart3,filepart4, size/3);
+    //Interface functions
+    DiskView::singleton()->addDisk(filepart1,filepart2,filepart3,filepart4);
+    DiskView::singleton()->printDisk();
 
     std::ofstream out1 ("1.mp4",std::ios::binary);
     std::ofstream out2 ("2.mp4",std::ios::binary);

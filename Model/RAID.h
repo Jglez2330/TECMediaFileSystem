@@ -6,6 +6,8 @@
 #define TECMEDIAFILESYSTEM_RAID_H
 
 #include "VideoFile.h"
+#include "../View/DiskView.h"
+
 class RAID {
 
 public:

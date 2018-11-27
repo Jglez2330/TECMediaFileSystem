@@ -46,6 +46,7 @@ bool Manager::changeMetadata(std::string name, json j){
 bool Manager::deleteVideo(std::string name){
     try{
         datamanagement->deleteValue(name);
+        //Borrado del raid
         return true;
     }catch (int e){
         return false;
