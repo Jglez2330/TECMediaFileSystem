@@ -47,6 +47,10 @@ metadata de los videos y reproducirlos mediantes streaming. Se debe mostrar los 
 reproducir, pausar, adelantar y devolver el video.
 Odissey MediaPlayer permite buscar en la biblioteca de videos por cualquiera de los campos de la metadata de
 los videos.
+## Planificación y administración del proyecto
+Todos los aspectos referentes a la planificación y administración del proyecto se pueden encontrar en la sección de [proyectos](https://github.com/Jglez2330/TECMediaFileSystem/projects) de este repositorio.
+### Diagrama de Clases
+![Diagrama](/Class.jpeg)
 ## Estructuras de Datos Desarrollados
 ### Árbol Rojo-Negro
 Es un tipo de árbol binario de busqueda auto balaceado. En este árbol cada nodo posee un bit que indica el color del nodo, este puede ser de color rojo o negro.
