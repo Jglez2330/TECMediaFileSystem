@@ -8,7 +8,10 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include "../Model/json.hpp"
+#include "../Controller/DiskRequest.h"
 
+using json = nlohmann::json;
 
 DiskController* DiskController::serverSocketInstancePTR = nullptr;
 
@@ -49,7 +52,7 @@ DiskController::DiskController() {
     this->clientLenght = sizeof(this->clientAdress);
     this->client = accept(this->serverSocket,(struct sockaddr*)&clientAdress,&clientLenght);
 
-    listenClient();
+    getClientXML();
 
 
 
@@ -61,7 +64,7 @@ DiskController::DiskController() {
 
 }
 
-void DiskController::listenClient() {
+std::string DiskController::getClientXML() {
 
     bool isClientMessageComplete = false;
     char bufferByte[1];
@@ -78,10 +81,32 @@ void DiskController::listenClient() {
         if (bufferByte[0] != 0x0) {
             message.push_back(bufferByte[0]);
         }
-        bzero(bufferByte,1);
 
     }
 
 
-    printf("%s",message.data());
+    return message;
+}
+
+std::string DiskController::listenClient() {
+
+    auto jsonMessage = json::parse(getClientXML());
+
+    int opcode = jsonMessage["opcode"];
+
+    switch(opcode) {
+
+
+    }
+
+
+
+}
+
+
+void DiskController::send(json clientJson) {
+    long long size = strlen(clientJson.dump().data());
+
+    write(this->client,clientJson.dump().data(), size);
+
 }

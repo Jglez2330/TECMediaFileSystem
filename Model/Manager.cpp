@@ -22,8 +22,8 @@ bool Manager::addVideo(json j){
 }
 std::string Manager::searchVideo(std::string name){
     std::string code = datamanagement->getValue(name)->getCode();
-    unsigned char * video = RAID::read(code);
-    return std::string(video,video+strlen((char*) video));
+    std::string video = RAID::read(code);
+    return std::string(video,video.size());
 }
 bool Manager::changeMetadata(std::string name, json j){
     try {

@@ -8,14 +8,18 @@
 
 #include <string>
 #include "Socket.h"
+#include "json.hpp"
+using json = nlohmann::json;
 
 class DiskController : Socket {
 public:
 
     void error(char *error);
     static DiskController* getInstance();
-    std::string readClient();
-    void listenClient();
+    std::string listenClient();
+    std::string getClientXML();
+    void send(json clientJson);
+
 
 
 

@@ -10,9 +10,9 @@ class RAID {
 
 public:
 
-    static unsigned char * write(char* video,long long length, std::string Path);
-    static unsigned char * read(std::string code);
-    static bool  recontructData(int diskFailure);
+    static bool write(char *video, long long length, std::string Path);
+    static std::string read(std::string code);
+    static std::string recontructData(std::string disk1,std::string disk2,std::string disk3, int diskFailure);
     /**
      * Calculates the exclusive or parity of the fourth file
      * @param partOfFile1 first part of the file
