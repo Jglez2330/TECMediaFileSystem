@@ -50,7 +50,7 @@ los videos.
 ## Planificación y administración del proyecto
 Todos los aspectos referentes a la planificación y administración del proyecto se pueden encontrar en la sección de [proyectos](https://github.com/Jglez2330/TECMediaFileSystem/projects) de este repositorio.
 ### Diagrama de Clases
-![Diagrama](/Class.jpeg)
+![Diagrama](https://imgur.com/a/AJ0Chl7)
 ## Estructuras de Datos Desarrollados
 ### Árbol Rojo-Negro
 Es un tipo de árbol binario de busqueda auto balaceado. En este árbol cada nodo posee un bit que indica el color del nodo, este puede ser de color rojo o negro.
