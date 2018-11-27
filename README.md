@@ -61,5 +61,7 @@ En el proyecto programado se uso para poder realizar buscadas mas eficientes y r
 ## Algoritmos Desarrollados
 ### RAID 5
 El RAID (Redundant Array of Inexpensive Disks) es un sistema de almacenamiento de datos que utiliza multiple discos entre los cuales se distribuyen los datos.
+
 El RAID 5, consiste en dividir un archivo en (n - 1) discos, donde n es el numero de discos en el array, en el disco restante se almacena el resultado de realizar la operacion XOR (exclusive or) en los datos de cada disco con el disco adyacente. Este sistema permite la falla de un disco en un array de cuatro discos.
+
 Para restaurar los datos se realiza la operacion XOR en cada uno de los discos con el disco vecino, el resultado se le vuelve aplicar la operacion XOR con el disco vecino, esta operacion se realiza hasta que ya no queden discos, esto permite obtener el disco faltante
