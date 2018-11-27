@@ -1,5 +1,4 @@
 # TECMediaFileSystem
-## Estructuras de Datos Utilizadas
 ## Descripción del problema
 Tec Media File System (TECMFS) es un sistema de archivos que se asemeja mucho a una base de datos NoSQL bajo un esquema RAID 5. El mismo se encuentra construido mediante una arquitecrura distribuida llamada "Share Disk Architecure", la misma tendrá los siguientes componentes:
 
@@ -48,3 +47,19 @@ metadata de los videos y reproducirlos mediantes streaming. Se debe mostrar los 
 reproducir, pausar, adelantar y devolver el video.
 Odissey MediaPlayer permite buscar en la biblioteca de videos por cualquiera de los campos de la metadata de
 los videos.
+## Estructuras de Datos Desarrollados
+### Árbol Rojo-Negro
+Es un tipo de árbol binario de busqueda auto balaceado. En este árbol cada nodo posee un bit que indica el color del nodo, este puede ser de color rojo o negro.
+
+##### Este arbol posee las siguientes propoiedades:
+- Cada nodo es rojo o negro
+- El nodo raíz es negro
+- Todas las hojas son negras
+- Cualquier camino de un nodo a cualquiera de sus hijos posee la misma cantidad de nodos negros
+
+En el proyecto programado se uso para poder realizar buscadas mas eficientes y rapidas de la metadata que se guarda de cada video.
+## Algoritmos Desarrollados
+### RAID 5
+El RAID (Redundant Array of Inexpensive Disks) es un sistema de almacenamiento de datos que utiliza multiple discos entre los cuales se distribuyen los datos.
+El RAID 5, consiste en dividir un archivo en (n - 1) discos, donde n es el numero de discos en el array, en el disco restante se almacena el resultado de realizar la operacion XOR (exclusive or) en los datos de cada disco con el disco adyacente. Este sistema permite la falla de un disco en un array de cuatro discos.
+Para restaurar los datos se realiza la operacion XOR en cada uno de los discos con el disco vecino, el resultado se le vuelve aplicar la operacion XOR con el disco vecino, esta operacion se realiza hasta que ya no queden discos, esto permite obtener el disco faltante
